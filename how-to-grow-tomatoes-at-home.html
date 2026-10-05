@@ -1,0 +1,575 @@
+\
+<style>
+/* Scoped article system: tomato-growing guide */
+.tomato-guide {
+  --tg-ink: #18221d;
+  --tg-muted: #5c685f;
+  --tg-accent: #b83a2f;
+  --tg-accent-dark: #8f2b23;
+  --tg-soft: #f7f3ee;
+  --tg-green: #2f5d43;
+  --tg-border: #e4e0d9;
+  --tg-white: #fff;
+  --tg-shadow: 0 18px 50px rgba(24,34,29,.09);
+  color: var(--tg-ink);
+  max-width: 1120px;
+  margin: 0 auto;
+  font-family: inherit;
+  line-height: 1.72;
+  font-size: 17px;
+}
+.tomato-guide *, .tomato-guide *::before, .tomato-guide *::after { box-sizing: border-box; }
+.tomato-guide a { color: var(--tg-accent-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.tomato-guide a:hover { text-decoration-thickness: 2px; }
+.tomato-guide .tg-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(34px, 6vw, 72px);
+  margin: 12px 0 34px;
+  border: 1px solid var(--tg-border);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(184,58,47,.13), transparent 30%),
+    radial-gradient(circle at 12% 85%, rgba(47,93,67,.12), transparent 32%),
+    linear-gradient(135deg, #fff 0%, #f8f4ef 100%);
+  box-shadow: var(--tg-shadow);
+}
+.tomato-guide .tg-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--tg-border);
+  color: var(--tg-green);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.tomato-guide h1 {
+  max-width: 850px;
+  margin: 0 0 18px;
+  font-size: clamp(2.15rem, 5vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -.045em;
+}
+.tomato-guide .tg-lead {
+  max-width: 790px;
+  margin: 0;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: var(--tg-muted);
+}
+.tomato-guide .tg-quick {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+.tomato-guide .tg-stat {
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--tg-border);
+}
+.tomato-guide .tg-stat strong { display:block; font-size: 1rem; }
+.tomato-guide .tg-stat span { display:block; color:var(--tg-muted); font-size:.88rem; margin-top:4px; }
+.tomato-guide .tg-answer,
+.tomato-guide .tg-note,
+.tomato-guide .tg-warning,
+.tomato-guide .tg-action {
+  margin: 26px 0;
+  padding: 22px 24px;
+  border-radius: 18px;
+  border: 1px solid var(--tg-border);
+  background: var(--tg-soft);
+}
+.tomato-guide .tg-answer { border-left: 5px solid var(--tg-green); background:#f2f7f2; }
+.tomato-guide .tg-note { border-left: 5px solid #b58b3b; background:#fbf7ed; }
+.tomato-guide .tg-warning { border-left: 5px solid var(--tg-accent); background:#fff4f2; }
+.tomato-guide .tg-action { background:var(--tg-ink); color:#fff; border-color:var(--tg-ink); }
+.tomato-guide .tg-action a { color:#fff; }
+.tomato-guide .tg-section { margin: 54px 0; }
+.tomato-guide h2 {
+  margin: 0 0 18px;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height:1.16;
+  letter-spacing:-.025em;
+}
+.tomato-guide h3 {
+  margin: 30px 0 10px;
+  font-size:1.28rem;
+  line-height:1.25;
+}
+.tomato-guide p { margin: 0 0 17px; }
+.tomato-guide ul, .tomato-guide ol { margin: 0 0 20px; padding-left: 1.35rem; }
+.tomato-guide li { margin: 8px 0; }
+.tomato-guide .tg-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.tomato-guide .tg-card {
+  padding:24px;
+  border:1px solid var(--tg-border);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 10px 30px rgba(24,34,29,.05);
+}
+.tomato-guide .tg-card h3 { margin-top:0; }
+.tomato-guide .tg-table-wrap {
+  overflow-x:auto;
+  margin:24px 0;
+  border:1px solid var(--tg-border);
+  border-radius:16px;
+}
+.tomato-guide table { width:100%; min-width:650px; border-collapse:collapse; background:#fff; }
+.tomato-guide caption { text-align:left; padding:16px; font-weight:800; background:var(--tg-soft); }
+.tomato-guide th, .tomato-guide td {
+  padding:14px 16px;
+  text-align:left;
+  vertical-align:top;
+  border-bottom:1px solid var(--tg-border);
+}
+.tomato-guide th { background:#faf9f7; font-weight:800; }
+.tomato-guide tr:last-child td { border-bottom:0; }
+.tomato-guide .tg-steps { counter-reset: tomato-step; display:grid; gap:14px; padding:0; list-style:none; }
+.tomato-guide .tg-steps li {
+  counter-increment: tomato-step;
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:16px;
+  align-items:start;
+  padding:20px;
+  border:1px solid var(--tg-border);
+  border-radius:18px;
+  background:#fff;
+}
+.tomato-guide .tg-steps li::before {
+  content:counter(tomato-step);
+  display:grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--tg-green);
+  color:#fff;
+  font-weight:800;
+}
+.tomato-guide .tg-checklist {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  padding:0;
+  list-style:none;
+}
+.tomato-guide .tg-checklist li {
+  margin:0;
+  padding:14px 16px 14px 42px;
+  position:relative;
+  border:1px solid var(--tg-border);
+  border-radius:14px;
+  background:#fff;
+}
+.tomato-guide .tg-checklist li::before {
+  content:"✓";
+  position:absolute;
+  left:15px;
+  top:12px;
+  color:var(--tg-green);
+  font-weight:900;
+}
+.tomato-guide .tg-faq {
+  border-top:1px solid var(--tg-border);
+  padding:18px 0;
+}
+.tomato-guide .tg-faq h3 { margin:0 0 8px; }
+.tomato-guide .tg-sources {
+  padding:24px;
+  border-radius:20px;
+  background:#f7f8f5;
+  border:1px solid var(--tg-border);
+}
+.tomato-guide .tg-small { color:var(--tg-muted); font-size:.92rem; }
+.tomato-guide .tg-pulse {
+  animation: tg-pulse 4s ease-in-out infinite;
+}
+@keyframes tg-pulse {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tomato-guide .tg-pulse { animation:none; }
+}
+@media (max-width: 760px) {
+  .tomato-guide { font-size:16px; }
+  .tomato-guide .tg-hero { border-radius:20px; padding:30px 22px; }
+  .tomato-guide .tg-quick,
+  .tomato-guide .tg-grid,
+  .tomato-guide .tg-checklist { grid-template-columns:1fr; }
+  .tomato-guide .tg-section { margin:42px 0; }
+}
+@media (max-width: 430px) {
+  .tomato-guide h1 { font-size:2.05rem; }
+  .tomato-guide .tg-stat { padding:13px; }
+  .tomato-guide .tg-card,
+  .tomato-guide .tg-answer,
+  .tomato-guide .tg-note,
+  .tomato-guide .tg-warning,
+  .tomato-guide .tg-action { padding:18px; }
+  .tomato-guide .tg-steps li { grid-template-columns:40px 1fr; padding:16px; gap:12px; }
+}
+</style>
+
+<article class="tomato-guide">
+  <header class="tg-hero">
+    <div class="tg-kicker">Home Gardening • Practical Guide</div>
+    <h1>How to Grow Tomatoes at Home</h1>
+    <p class="tg-lead">Grow productive tomato plants at home by giving them strong light, warm growing conditions, well-drained soil, consistent moisture, suitable support, and enough room for airflow. You can grow tomatoes in a garden bed, raised bed, or container, and starting with a suitable variety makes the process much easier.</p>
+
+    <div class="tg-quick" aria-label="Tomato growing essentials">
+      <div class="tg-stat"><strong>6+ hours</strong><span>Direct sun each day</span></div>
+      <div class="tg-stat"><strong>Consistent moisture</strong><span>Water deeply rather than lightly</span></div>
+      <div class="tg-stat"><strong>Good airflow</strong><span>Give plants adequate space</span></div>
+      <div class="tg-stat"><strong>Support early</strong><span>Stake, cage, or trellis at planting</span></div>
+    </div>
+  </header>
+
+  <div class="tg-answer" role="note">
+    <strong>Quick answer:</strong> Choose a tomato variety suited to your space, plant it in well-drained soil or quality potting mix, give it at least six hours of direct sunlight, water deeply and consistently at the soil line, and provide support as the plant grows. In containers, choose a large enough pot and monitor moisture more closely because containers dry out faster.
+  </div>
+
+  <nav class="tg-card" aria-label="Article contents">
+    <strong>What this guide covers</strong>
+    <ul>
+      <li><a href="#choose-variety">Choosing the right tomato</a></li>
+      <li><a href="#sun-soil">Sun, soil, and planting location</a></li>
+      <li><a href="#start-seeds">Starting tomatoes from seed</a></li>
+      <li><a href="#transplant">Transplanting seedlings</a></li>
+      <li><a href="#containers">Growing tomatoes in containers</a></li>
+      <li><a href="#water-feed">Watering and feeding</a></li>
+      <li><a href="#support-prune">Supporting and pruning</a></li>
+      <li><a href="#problems">Common problems and fixes</a></li>
+      <li><a href="#harvest">Harvesting and storing tomatoes</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ul>
+  </nav>
+
+  <section class="tg-section" id="choose-variety">
+    <h2>1. Choose a tomato variety that fits your space</h2>
+    <p>Before buying seeds or a transplant, decide where the plant will live and how much space you can give it. Tomato plants are broadly described as <strong>determinate</strong> or <strong>indeterminate</strong>. Determinate, or bush-type, plants reach a defined size and produce a concentrated crop. Indeterminate, or vining, plants continue growing and producing along their stems and usually need stronger support.</p>
+    <p>For a balcony, patio, or small container garden, a compact or determinate variety is often easier to manage. If you have a garden bed and want harvests over a longer period, an indeterminate variety can make good use of vertical support.</p>
+
+    <div class="tg-grid">
+      <div class="tg-card">
+        <h3>Determinate tomatoes</h3>
+        <ul>
+          <li>Compact, bushier growth.</li>
+          <li>Useful for containers and smaller gardens.</li>
+          <li>Fruit tends to ripen over a more concentrated period.</li>
+          <li>Usually need less pruning than indeterminate plants.</li>
+        </ul>
+      </div>
+      <div class="tg-card">
+        <h3>Indeterminate tomatoes</h3>
+        <ul>
+          <li>Continue growing and flowering through the season when conditions remain suitable.</li>
+          <li>Need a cage, stake, trellis, or another strong support system.</li>
+          <li>Can occupy considerable vertical and horizontal space.</li>
+          <li>Often benefit from training and selective pruning.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="tg-small">University extension guidance also recommends choosing sturdy transplants without obvious leaf spotting and considering disease-resistant varieties when previous tomato disease has been a problem. citeturn0search1</p>
+  </section>
+
+  <section class="tg-section" id="sun-soil">
+    <h2>2. Give tomatoes the right light, soil, and location</h2>
+    <p>Tomatoes are warm-season plants that perform best with plenty of direct sunlight. A practical minimum is <strong>six hours of direct sun per day</strong>, with more light generally useful when temperatures are appropriate. Choose a location that receives strong morning and daytime sun and is not shaded by a wall, tree, or building for much of the day. citeturn0search0turn0search1</p>
+    <p>Use soil that drains well but can hold enough moisture for steady growth. Garden soil can be improved with mature compost or other suitable organic matter. Avoid planting into soil that stays saturated after watering or rain; tomato roots need oxygen as well as water.</p>
+
+    <div class="tg-note">
+      <strong>Soil pH:</strong> Extension recommendations vary somewhat by region and soil type. A soil test is more useful than guessing. For example, the University of Minnesota lists pH 5.5–7 as suitable, while Penn State's production guidance gives 5.8–6.6 as a target range. Use your local soil-test recommendation when available. citeturn0search1turn0search4
+    </div>
+
+    <h3>Think about last season's crops</h3>
+    <p>If your garden has had tomato, potato, pepper, eggplant, or tomatillo plants recently, crop rotation can reduce the chance of carrying some soil-associated problems into the new crop. The University of Minnesota recommends avoiding those related crops in the same location for three or four years where practical. citeturn0search1</p>
+  </section>
+
+  <section class="tg-section" id="start-seeds">
+    <h2>3. Start tomatoes from seed</h2>
+    <p>Starting from seed gives you access to more varieties than you may find as nursery transplants. Use a clean seed-starting mix and a container with drainage. Sow seeds according to the packet directions; a shallow sowing is typical for tomato seed.</p>
+    <p>Warm conditions and bright light help seedlings develop into compact plants rather than thin, stretched stems. Once seedlings have true leaves, give each plant enough space to continue growing. Before moving indoor-grown plants outside, gradually expose them to outdoor conditions instead of placing them immediately into full sun and wind.</p>
+
+    <ol class="tg-steps">
+      <li><div><strong>Sow in a clean growing medium.</strong><br>Use a seed-starting mix and keep it evenly moist rather than saturated.</div></li>
+      <li><div><strong>Provide warmth and light.</strong><br>Warm soil supports germination, while strong overhead light helps prevent weak, elongated seedlings.</div></li>
+      <li><div><strong>Give seedlings room.</strong><br>Thin or transplant young seedlings after true leaves appear so they are not competing for light and root space.</div></li>
+      <li><div><strong>Harden off before transplanting.</strong><br>Gradually increase exposure to outdoor sunlight and wind over about a week or longer rather than making the transition abruptly.</div></li>
+    </ol>
+    <p>For a specific climate, follow the planting window recommended by your local extension service or gardening authority. The correct date depends on frost risk, soil temperature, and local weather rather than a universal calendar date. citeturn0search1turn0search8</p>
+  </section>
+
+  <section class="tg-section" id="transplant">
+    <h2>4. Transplant seedlings correctly</h2>
+    <p>Move tomatoes outdoors only when the local risk of damaging cold has passed and the soil is sufficiently warm. Tomatoes are sensitive to cool conditions; Penn State notes that frost can kill plants and that cool nights can interfere with flowering and fruit set. citeturn0search0turn0search4</p>
+
+    <ol class="tg-steps">
+      <li><div><strong>Water the seedling before planting.</strong><br>A hydrated root ball handles transplanting stress better than a dry one.</div></li>
+      <li><div><strong>Prepare the planting hole or trench.</strong><br>Make enough room for the root system and choose a location with strong direct light.</div></li>
+      <li><div><strong>Plant deeply when appropriate.</strong><br>Tomatoes can form roots along buried stems. Leggy seedlings can be planted at an angle or in a shallow trench, leaving the upper foliage above the soil.</div></li>
+      <li><div><strong>Firm the soil gently.</strong><br>Remove large air pockets around the roots without compacting the soil excessively.</div></li>
+      <li><div><strong>Water thoroughly.</strong><br>Soak the root zone after planting so the soil makes good contact with the roots.</div></li>
+      <li><div><strong>Install support immediately.</strong><br>Putting a stake or cage in place while the plant is small avoids disturbing roots later.</div></li>
+    </ol>
+
+    <div class="tg-warning">
+      <strong>Do not use a universal planting date.</strong> Frost-free dates and suitable planting temperatures differ substantially between climates. Use the local growing-season guidance for your area instead of copying a calendar date from another region.
+    </div>
+  </section>
+
+  <section class="tg-section" id="containers">
+    <h2>5. Grow tomatoes in containers when garden space is limited</h2>
+    <p>Tomatoes can grow successfully in containers, especially compact varieties. Use a large container with drainage holes and a quality potting mix rather than ordinary garden soil. A larger root volume generally gives the plant more room for growth and makes moisture management easier.</p>
+    <p>Oregon State University recommends containers at least 12 inches deep for determinate tomatoes, such as a five-gallon nursery pot, while a 2026 University of Minnesota article recommends at least five gallons for container tomatoes. Larger containers can provide additional root volume. citeturn0search8turn0search6</p>
+
+    <div class="tg-grid">
+      <div class="tg-card">
+        <h3>Container setup</h3>
+        <ul>
+          <li>Choose a container with drainage holes.</li>
+          <li>Use quality potting mix.</li>
+          <li>Place the container where the plant receives strong direct sun.</li>
+          <li>Add a stake or small cage at planting time.</li>
+          <li>Leave enough space around the container for airflow and maintenance.</li>
+        </ul>
+      </div>
+      <div class="tg-card">
+        <h3>Container watering</h3>
+        <ul>
+          <li>Check moisture frequently, especially during hot or windy weather.</li>
+          <li>Water the root zone thoroughly rather than giving frequent tiny splashes.</li>
+          <li>Do not allow the container to remain waterlogged.</li>
+          <li>Empty saucers if standing water remains for long periods.</li>
+        </ul>
+      </div>
+    </div>
+    <p>Container plants can need more frequent watering than plants in the ground because the limited volume of growing medium loses moisture faster. At the same time, constantly saturated mix can damage roots, so the goal is consistent moisture—not permanently wet soil. citeturn0search5</p>
+  </section>
+
+  <section class="tg-section" id="water-feed">
+    <h2>6. Water tomatoes consistently</h2>
+    <p>Consistent soil moisture is one of the most important parts of tomato care. Uneven moisture during fruit development can contribute to blossom-end rot and fruit cracking. Rather than watering a little every day by habit, check the soil and water deeply enough to wet the root zone.</p>
+    <p>Penn State and the University of Minnesota both give roughly <strong>1 inch of water per week</strong> as a useful general benchmark for garden-grown tomatoes, adjusted for rainfall, soil type, temperature, and plant size. Very sandy soil or hot weather may require more frequent watering. citeturn0search0turn0search1</p>
+
+    <div class="tg-card">
+      <h3>A simple watering routine</h3>
+      <ol>
+        <li>Check the soil several inches below the surface rather than judging only by the appearance of the top layer.</li>
+        <li>Water the soil around the root zone, not the foliage.</li>
+        <li>Water thoroughly when the plant needs it.</li>
+        <li>Water in the morning when practical so foliage that gets accidentally wet can dry during the day.</li>
+        <li>Increase monitoring during heat, wind, fruit development, or container growing.</li>
+      </ol>
+    </div>
+
+    <h3>Mulch can make moisture easier to manage</h3>
+    <p>A layer of suitable organic mulch can reduce evaporation, suppress weeds, and reduce soil splashing onto leaves. Penn State recommends about 2–3 inches of seed-free straw or bark chips for garden tomatoes; other extension guidance also supports mulch as a way to conserve moisture and reduce disease-favoring soil splash. citeturn0search0turn0search5</p>
+
+    <h3>Feed according to the soil and plant</h3>
+    <p>Do not assume that more fertilizer means more tomatoes. Excess nitrogen can encourage lush leaf growth at the expense of fruit production. Soil-test results are the best starting point for determining nutrient needs in a garden bed. For containers, use a fertilizer appropriate for vegetables and follow the product label rather than applying concentrated fertilizer by guesswork. citeturn0search1turn0search4</p>
+  </section>
+
+  <section class="tg-section" id="support-prune">
+    <h2>7. Support and prune tomato plants appropriately</h2>
+    <p>Supporting tomatoes keeps foliage and fruit off the ground, improves airflow, and makes harvesting easier. Common systems include cages, stakes, and trellises. Install the support when planting rather than waiting until the plant is large enough to make root disturbance likely. citeturn0search0turn0search2</p>
+
+    <div class="tg-table-wrap">
+      <table>
+        <caption>Choosing a tomato support system</caption>
+        <thead>
+          <tr><th>Method</th><th>Best fit</th><th>What to know</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cage</td><td>Simple home gardens and many determinate plants</td><td>Easy to install and requires less ongoing tying; use a sturdy cage that matches the plant's eventual size.</td></tr>
+          <tr><td>Stake</td><td>Gardeners who want a narrow, trained plant</td><td>Requires tying and, for many indeterminate plants, regular attention to side shoots.</td></tr>
+          <tr><td>Trellis</td><td>Indeterminate vines and gardeners using vertical space</td><td>Provides strong vertical support but needs a structure capable of carrying mature plants and fruit.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Do you need to prune tomatoes?</h3>
+    <p>Not every tomato plant needs aggressive pruning. Determinate varieties generally require little pruning because their growth habit is naturally compact. Indeterminate plants can be trained and selectively pruned to keep the plant manageable and improve airflow. Penn State specifically describes removing suckers for staked plants while retaining the first set of leaves to preserve photosynthesis and foliage cover. citeturn0search0</p>
+    <p>If you prune, avoid stripping the plant bare. Leaves are the plant's photosynthetic machinery, so the objective is controlled growth—not removing as much foliage as possible.</p>
+  </section>
+
+  <section class="tg-section" id="spacing">
+    <h2>8. Give plants enough space for airflow</h2>
+    <p>Tomatoes need room for light and air to move through the foliage. Crowded plants stay humid longer after watering or rain and can make disease management more difficult. Exact spacing depends on variety and support method, but home-garden guidance commonly places plants roughly 18–24 inches apart when using stakes, with wider spacing often appropriate for unsupported or vigorous plants. citeturn0search0turn0search2turn0search9</p>
+
+    <div class="tg-checklist">
+      <li>Do not pack plants tightly simply to fit more seedlings.</li>
+      <li>Leave room to walk around mature plants.</li>
+      <li>Keep leaves away from persistently wet soil where practical.</li>
+      <li>Use support to keep fruit and foliage off the ground.</li>
+      <li>Remove diseased material promptly and dispose of it appropriately.</li>
+      <li>Water at the base instead of regularly wetting the foliage.</li>
+    </div>
+  </section>
+
+  <section class="tg-section" id="problems">
+    <h2>9. Common tomato problems and what to check</h2>
+
+    <div class="tg-grid">
+      <div class="tg-card">
+        <h3>Blossom-end rot</h3>
+        <p>Dark, sunken tissue at the blossom end of developing fruit is commonly associated with inconsistent moisture during fruit development. Focus first on maintaining steady soil moisture and avoiding severe wet-dry cycles. Do not treat every case as a simple calcium-deficiency problem without considering watering and root conditions. citeturn0search0turn0search1</p>
+      </div>
+      <div class="tg-card">
+        <h3>Fruit cracking</h3>
+        <p>Cracking can follow sudden increases in water availability after a dry period. Keep soil moisture more consistent and avoid allowing plants to become severely dry before a heavy watering. citeturn0search0turn0search4</p>
+      </div>
+      <div class="tg-card">
+        <h3>Leaf spots or fungal-looking damage</h3>
+        <p>Start with the basics: improve airflow, avoid unnecessary leaf wetting, water at the base, and remove seriously affected material when appropriate. If the symptoms persist, identify the disease before choosing a treatment. citeturn0search10</p>
+      </div>
+      <div class="tg-card">
+        <h3>Lots of leaves but few fruits</h3>
+        <p>Review light, temperature, nitrogen supply, watering consistency, and variety. Excess nitrogen can promote vegetative growth, while temperature extremes can interfere with flowering and fruit set. citeturn0search0turn0search1turn0search4</p>
+      </div>
+    </div>
+
+    <div class="tg-warning">
+      <strong>Heat matters.</strong> Tomatoes are warm-season plants, but excessive heat can reduce flowering, pollination, and fruit development. Penn State notes that temperatures above 90°F (about 32°C) or below 55°F (about 13°C) can slow important parts of the crop cycle. In hot climates, prioritize consistent watering, airflow, and local recommendations for heat management. citeturn0search4
+    </div>
+  </section>
+
+  <section class="tg-section" id="harvest">
+    <h2>10. Harvest tomatoes at the right stage</h2>
+    <p>Harvest timing depends on variety and how you plan to use the fruit. Many tomatoes are best picked when they have developed their characteristic mature color and are firm but yielding. Some gardeners harvest mature-green fruit before a weather event or when pests are a concern and allow it to ripen indoors.</p>
+    <p>The University of Minnesota notes that mature-green tomatoes can often ripen satisfactorily indoors, while truly immature green fruit may not develop good flavor. Store mature-green fruit at room temperature, separated so individual tomatoes are not touching, and check them regularly as they ripen. citeturn0search1</p>
+
+    <div class="tg-action">
+      <strong>Practical harvest rule:</strong> Pick fruit based on its maturity and your intended use, not simply because it has reached a certain number of days on the calendar. Weather, variety, and growing conditions all affect ripening.
+    </div>
+  </section>
+
+  <section class="tg-section" id="routine">
+    <h2>11. A simple weekly tomato-care routine</h2>
+    <p>You do not need a complicated schedule. A short inspection several times a week is usually more useful than waiting for a major problem to become obvious.</p>
+
+    <ul class="tg-checklist">
+      <li>Check soil moisture near the root zone.</li>
+      <li>Look under and around leaves for spots, insects, or unusual damage.</li>
+      <li>Check that stems are securely supported.</li>
+      <li>Remove ripe fruit promptly.</li>
+      <li>Look for new suckers if you are training an indeterminate plant.</li>
+      <li>Check containers for drainage and excessive dryness.</li>
+      <li>Keep weeds from competing around young plants.</li>
+      <li>Adjust watering for heat, rainfall, wind, and plant size.</li>
+    </ul>
+  </section>
+
+  <section class="tg-section" id="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="tg-faq">
+      <h3>How much sunlight do tomatoes need?</h3>
+      <p>Give tomatoes at least about six hours of direct sunlight each day. A bright, sunny location is one of the most important foundations for productive plants. citeturn0search0turn0search1</p>
+    </div>
+
+    <div class="tg-faq">
+      <h3>Can I grow tomatoes in a pot?</h3>
+      <p>Yes. Choose a large container with drainage, quality potting mix, a suitable compact variety, and a sunny location. A container of around five gallons or larger is a practical starting point for many determinate tomatoes. citeturn0search6turn0search8</p>
+    </div>
+
+    <div class="tg-faq">
+      <h3>How often should I water tomato plants?</h3>
+      <p>There is no single interval that works for every garden. Check the root-zone moisture and water deeply when needed. Around one inch of water per week is a useful general benchmark for established garden tomatoes, adjusted for rainfall, soil, heat, and plant size. Containers can need more frequent checks. citeturn0search0turn0search1</p>
+    </div>
+
+    <div class="tg-faq">
+      <h3>Should I remove tomato suckers?</h3>
+      <p>It depends on the variety and training system. Determinate plants generally need little pruning. Indeterminate plants can be selectively trained and pruned, particularly when grown on stakes or trellises. Avoid excessive pruning that removes too much healthy foliage. citeturn0search0turn0search1</p>
+    </div>
+
+    <div class="tg-faq">
+      <h3>Why are my tomato leaves getting wet and developing spots?</h3>
+      <p>Wet foliage and soil splash can increase disease risk. Water at the base of the plant, improve airflow with appropriate spacing and support, and investigate the actual symptom before selecting a disease treatment. citeturn0search10</p>
+    </div>
+
+    <div class="tg-faq">
+      <h3>What is the easiest tomato type for beginners?</h3>
+      <p>A compact determinate or patio-type variety is often easier for beginners with limited space because the plant is more manageable. In a larger garden, an indeterminate variety can work well if you are prepared to install and maintain a strong support system.</p>
+    </div>
+
+    <div class="tg-faq">
+      <h3>Can I grow tomatoes from store-bought tomatoes?</h3>
+      <p>You can sometimes germinate seeds from a ripe tomato, but the resulting plants may not reproduce the exact characteristics of a hybrid or other commercially produced variety. For predictable results, use seed from a reputable source or purchase a healthy transplant whose variety is known.</p>
+    </div>
+  </section>
+
+  <section class="tg-section tg-sources" id="sources">
+    <h2>Research sources</h2>
+    <p>The growing guidance in this article was checked against university extension resources rather than relying on a generic gardening template.</p>
+    <ul>
+      <li><a href="https://extension.psu.edu/tomatoes-from-seedlings-to-fruit" rel="noopener noreferrer">Penn State Extension — Tomatoes: From Seedlings to Fruit</a></li>
+      <li><a href="https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-tomatoes" rel="noopener noreferrer">University of Minnesota Extension — Growing tomatoes in home gardens</a></li>
+      <li><a href="https://extension.oregonstate.edu/catalog/pub/ec1333-s" rel="noopener noreferrer">Oregon State University Extension — Grow your own tomatoes and tomatillos</a></li>
+      <li><a href="https://extension.psu.edu/tomato-production" rel="noopener noreferrer">Penn State Extension — Tomato Production</a></li>
+      <li><a href="https://extension.psu.edu/stake-your-tomatoes" rel="noopener noreferrer">Penn State Extension — Stake your Tomatoes</a></li>
+    </ul>
+    <p class="tg-small">Planting dates, heat management, disease pressure, and suitable varieties vary by climate. Use local extension or agricultural guidance for region-specific timing and treatment recommendations.</p>
+  </section>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "#article",
+      "headline": "How to Grow Tomatoes at Home",
+      "description": "A practical guide to growing tomatoes at home, including variety selection, sunlight, soil, planting, containers, watering, support, pruning, common problems, and harvesting.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "#webpage"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Growing tomatoes at home"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "#howto",
+      "name": "How to Grow Tomatoes at Home",
+      "description": "A practical process for growing tomato plants in a home garden or container.",
+      "step": [
+        {"@type":"HowToStep","name":"Choose a variety","text":"Choose a determinate or indeterminate tomato variety that fits the available space and support system."},
+        {"@type":"HowToStep","name":"Prepare the location","text":"Choose a sunny location with well-drained soil or use a large container with quality potting mix."},
+        {"@type":"HowToStep","name":"Plant","text":"Transplant after local frost risk has passed and the soil is warm enough, then water thoroughly."},
+        {"@type":"HowToStep","name":"Support","text":"Install a cage, stake, or trellis when planting so the growing plant and fruit remain supported."},
+        {"@type":"HowToStep","name":"Maintain moisture","text":"Water the root zone deeply and consistently, adjusting for rainfall, heat, soil, and container conditions."},
+        {"@type":"HowToStep","name":"Harvest","text":"Harvest fruit at the appropriate maturity stage for the variety and intended use."}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "#faq-schema",
+      "mainEntity": [
+        {"@type":"Question","name":"How much sunlight do tomatoes need?","acceptedAnswer":{"@type":"Answer","text":"Tomatoes need at least about six hours of direct sunlight each day and generally perform best in a bright, sunny location."}},
+        {"@type":"Question","name":"Can I grow tomatoes in a pot?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use a large container with drainage, quality potting mix, a suitable compact variety, and a sunny location. Around five gallons or larger is a practical starting point for many determinate tomatoes."}},
+        {"@type":"Question","name":"How often should I water tomato plants?","acceptedAnswer":{"@type":"Answer","text":"Check the root-zone moisture and water deeply when needed. Around one inch of water per week is a useful general benchmark for established garden tomatoes, adjusted for rainfall, soil, heat, and plant size."}},
+        {"@type":"Question","name":"Should I remove tomato suckers?","acceptedAnswer":{"@type":"Answer","text":"It depends on the variety and training system. Determinate plants generally need little pruning, while indeterminate plants can be selectively trained and pruned."}},
+        {"@type":"Question","name":"Why are my tomato leaves getting wet and developing spots?","acceptedAnswer":{"@type":"Answer","text":"Wet foliage and soil splash can increase disease risk. Water at the base, improve airflow, and identify the actual symptom before selecting a treatment."}},
+        {"@type":"Question","name":"What is the easiest tomato type for beginners?","acceptedAnswer":{"@type":"Answer","text":"A compact determinate or patio-type variety is often easier for beginners with limited space because the plant is more manageable."}},
+        {"@type":"Question","name":"Can I grow tomatoes from store-bought tomatoes?","acceptedAnswer":{"@type":"Answer","text":"You can sometimes germinate seeds from a ripe tomato, but the resulting plants may not reproduce the exact characteristics of a hybrid or other commercially produced variety."}}
+      ]
+    }
+  ]
+}
+</script>
